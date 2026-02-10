@@ -1,4 +1,13 @@
 /* Add your CSS here */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif; /* professional body font */
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; /* light background */
+}
+
 header {
     background-color: #0071c5; /* Intel blue */
     color: white;
@@ -36,6 +45,9 @@ h1,p {
 h1 {
     font-size: 2.5rem;
     margin: 0;
+    font-family: 'Playfair Display', serif; /* stylized heading font */
+    font-weight: 700;
+    letter-spacing: -1px;
 }
 
 header p {
@@ -44,21 +56,107 @@ header p {
 
 section {
     display: flex;
-    flex-wrap: nonwrap;
-    justify-content: center;
-    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start; /* align cards to the start */
+    overflow-x: auto; /* allow horizontal scrolling */
     gap: 20px;
     padding: 10px;
-    max-width: 920px;
+    width: 1200px; /* fits exactly 4 cards: (250px × 4) + (20px × 3 gaps) + (10px × 2 padding) */
+    margin: 0 auto; /* centers the section */
 }
 
 .card {
-    width: 220px;  /* cards with minimum width */
+    width: 250px;  /* card width */
+    height: auto; /* fixed card height for consistent size */
     border: 1px solid #ccc;
     padding: 1rem;
     border-radius: 8px;
+    position: relative; /* create positioning context for paragraph */
+    display: flex; /* use flexbox for consistent layout */
+    flex-direction: column; /* stack items vertically */
+    flex-shrink: 0; /* prevent card from shrinking */
+    overflow: hidden; /* ensure content stays within card */
+    transition: background-color 0.3s ease; /* smooth background transition */
 }
-
+.card:hover {
+    background-color: rgba(0, 113, 197, 0.6); /* darker blue semi-transparent background */
+}
+.card h2 {
+    margin: 0 0 0.25rem 0; /* reduce spacing */
+    font-size: 1.8rem;
+    white-space: nowrap; /* keep on one line */
+    overflow: hidden; /* hide overflow */
+    text-overflow: ellipsis; /* add ellipsis if text is too long */
+    transition: opacity 0.3s ease;
+    opacity: 1;
+    color: #0071c5; /* Intel blue for years */
+    font-weight: 700;
+    font-family: 'Playfair Display', serif; /* stylized for years */
+}
+.card h3 {
+    margin: 0 0 0.75rem 0; /* reduce spacing */
+    font-size: 1.1rem;
+    white-space: nowrap; /* keep on one line */
+    overflow: hidden; /* hide overflow */
+    text-overflow: ellipsis; /* add ellipsis if text is too long */
+    transition: opacity 0.3s ease;
+    opacity: 1;
+    font-weight: 600; /* semi-bold */
+    color: #333; /* dark text */
+}
+.card img {
+    width: 100%; /* fill card width */
+    height: 150px; /* fixed image height */
+    object-fit: cover; /* crop images to fit without stretching */
+    border-radius: 4px;
+    margin-bottom: 0.5rem; /* spacing below image */
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+.card:hover h2,
+.card:hover h3,
+.card:hover img {
+    opacity: 0.3; /* slightly dim heading and image to keep them visible */
+}
+/* Hide paragraph text by default */
+.card p {
+    position: absolute; /* position absolutely at the top */
+    top: 1rem; /* align to the top with same padding as card */
+    left: 1rem;
+    right: 1rem;
+    opacity: 0; /* invisible by default */
+    transition: opacity 0.3s ease; /* smooth fade effect */
+    margin: 0; /* remove default paragraph margins */
+    color: white; /* white paragraph text */
+    line-height: 1.4; /* better readability */
+}
+/* Show paragraph text on hover */
+.card:hover p {
+    opacity: 1; /* visible on hover */
+}
 .overlay{
   display:none;
+}
+/* Center info text */
+.info-text {
+    display: flex; /* use flexbox to center content */
+    justify-content: center; /* center horizontally */
+    align-items: center; /* center vertically */
+    margin: 20px auto; /* center the element with auto margins */
+}
+/* Mobile responsive - stack cards vertically */
+@media (max-width: 768px) {
+    section {
+        flex-wrap: wrap; /* allow cards to wrap */
+        width: auto; /* auto width for smaller screens */
+        justify-content: center; /* center wrapped items */
+    }
+    .card {
+        width: calc(50% - 10px); /* 2 cards per row on tablets */
+    }
+}
+@media (max-width: 480px) {
+    .card {
+        width: 100%; /* 1 card per row on small phones */
+    }
 }
