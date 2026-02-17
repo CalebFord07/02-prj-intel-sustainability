@@ -1,17 +1,16 @@
 /* Add your CSS here */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@700&display=swap');
-
 body {
     font-family: 'Roboto', sans-serif; /* professional body font */
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa; /* light background */
+    background-color: #f5f5f5; /* light background */
 }
 
 header {
     background-color: #0071c5; /* Intel blue */
     color: white;
-    padding: 20px;
+    padding: 40px 20px; /* increase padding */
+    margin-bottom: 60px; /* add space after header */
     
     display: flex;
     flex-direction: column;
@@ -54,15 +53,16 @@ header p {
     line-height: 2;  /* double spacing for paragraph */
 }
 
-section {
+.timeline {
     display: flex;
     flex-wrap: nowrap;
     justify-content: flex-start; /* align cards to the start */
     overflow-x: auto; /* allow horizontal scrolling */
     gap: 20px;
-    padding: 10px;
-    width: 1200px; /* fits exactly 4 cards: (250px × 4) + (20px × 3 gaps) + (10px × 2 padding) */
-    margin: 0 auto; /* centers the section */
+    padding: 60px 10px; /* increase vertical padding */
+    width: 1080px; /* fits exactly 4 cards: (250px × 4) + (20px × 3 gaps) + (10px × 2 padding) */
+    margin: 0 auto 60px auto; /* add space below timeline */
+     background-color: #f5f5f5;;
 }
 
 .card {
@@ -75,6 +75,7 @@ section {
     display: flex; /* use flexbox for consistent layout */
     flex-direction: column; /* stack items vertically */
     flex-shrink: 0; /* prevent card from shrinking */
+    background-color: #FFFFFF;
     overflow: hidden; /* ensure content stays within card */
     transition: background-color 0.3s ease; /* smooth background transition */
 }
@@ -144,9 +145,21 @@ section {
     align-items: center; /* center vertically */
     margin: 20px auto; /* center the element with auto margins */
 }
+
+/* Three Column Section */
+.three-column {
+    padding: 60px 0; /* add vertical padding */
+    margin-bottom: 60px; /* add space below */
+}
+
+/* Subscription Section */
+.subscription {
+    padding: 60px 0; /* add vertical padding */
+    margin-bottom: 60px; /* add space below */
+}
 /* Mobile responsive - stack cards vertically */
 @media (max-width: 768px) {
-    section {
+    .timeline {
         flex-wrap: wrap; /* allow cards to wrap */
         width: auto; /* auto width for smaller screens */
         justify-content: center; /* center wrapped items */
@@ -160,3 +173,43 @@ section {
         width: 100%; /* 1 card per row on small phones */
     }
 }
+
+.subscription{
+    background-color: #FFFFFF;
+}
+/* Footer Styling */
+.footer {
+    display: flex; /* use flexbox for centering */
+    justify-content: center; /* center horizontally */
+    align-items: center; /* center vertically */
+    min-height: 100px; /* give footer minimum height */
+    padding: 40px 20px; /* increase padding */
+    margin-top: 60px; /* add space above footer */
+    background-color: #f5f5f5; /* light background */
+}
+
+/* RTL tweaks applied when JS detects an RTL language */
+.rtl {
+    direction: rtl;
+}
+.rtl header > div,
+.rtl .three-column,
+.rtl .subscription,
+.rtl .footer {
+    text-align: right;
+}
+.rtl .d-flex {
+    direction: rtl;
+}
+.rtl .header-icon {
+    transform: scaleX(-1); /* optional: mirror icons in RTL */
+}
+
+.footer p {
+    margin: 0; /* remove default margins */
+}
+.middle {
+    background-color: #f5f5f5;
+}
+
+
